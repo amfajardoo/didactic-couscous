@@ -50,7 +50,6 @@ jobs:
           path: dist
   # Check the Unit Tests
   test:
-    needs: [lint, build]
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
