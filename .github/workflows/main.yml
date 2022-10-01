@@ -21,26 +21,6 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-  # Check the lint status
-  lint:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "12.x"
-      - uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -109,17 +89,6 @@ jobs:
         run: npm run e2e:chrome
         continue-on-error: false
 
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
-
-      - name: Merge test reports
-        run: npm run combine:report
-
-      - name: Generate HTML reports
-        run: npm run generate:report
   # This workflow deploy the app on github pages
   deploy:
     needs: [build, test, cypress-test]
