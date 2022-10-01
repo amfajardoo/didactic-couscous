@@ -50,6 +50,7 @@ jobs:
           path: dist
   # Check the Unit Tests
   test:
+    name: Run Tests
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
