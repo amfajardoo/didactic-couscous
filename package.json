@@ -9,7 +9,7 @@
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "e2e": "ng e2e",
-    "e2e:chrome": "ng e2e --browser=chrome",
+    "e2e-headless": "ng e2e --headless",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
