@@ -84,19 +84,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: NodeJs Setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16.x"
-
-      - name: Install Cypress and Verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
-
       - name: Run Cypress Tests
-        run: npm run e2e-headless
-        continue-on-error: false
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
 
   # This workflow deploy the app on github pages
   deploy:
