@@ -88,6 +88,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           browser: chrome
+          start: npm start
 
   # This workflow deploy the app on github pages
   deploy:
