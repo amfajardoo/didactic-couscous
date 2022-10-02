@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng deploy --silent=true --base-href=/didactic-couscous/",
+    "deploy": "ng deploy --no-silent --base-href=/didactic-couscous/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
