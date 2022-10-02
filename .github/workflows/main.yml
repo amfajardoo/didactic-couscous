@@ -56,22 +56,18 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
       - name: NodeJs Setup
         uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-
       - uses: actions/cache@v1
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
       - name: Install dependencies
         run: npm ci
-
       - name: Test
         run: npm run test-headless
         continue-on-error: false
@@ -83,7 +79,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v4
         with:
@@ -95,7 +90,7 @@ jobs:
     needs: [build, test, cypress-test]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: actions/download-artifact@v2
